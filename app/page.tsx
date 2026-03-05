@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/posts'
 import PostCard from '@/components/PostCard'
+import SubscribeForm from '@/components/SubscribeForm'
 
 export default function HomePage() {
   const posts = getAllPosts()
@@ -40,6 +41,9 @@ export default function HomePage() {
           in active development
         </div>
       </div>
+
+      {/* Subscribe */}
+      <SubscribeForm />
 
       {/* Recent posts */}
       <div className="section-label">Recent entries</div>
