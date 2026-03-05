@@ -3,10 +3,30 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from './ThemeProvider'
+import { useState } from 'react'
 
 export default function Sidebar({ postCount }: { postCount: number }) {
   const pathname = usePathname()
   const { theme, toggle } = useTheme()
+
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleSubscribe = async () => {
+    if (!email.includes('@')) return
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      setStatus(res.ok ? 'success' : 'error')
+      if (res.ok) setEmail('')
+    } catch {
+      setStatus('error')
+    }
+  }
 
   const navLink = (href: string, label: string) => {
     const active = pathname === href || (href !== '/' && pathname.startsWith(href))
@@ -39,6 +59,38 @@ export default function Sidebar({ postCount }: { postCount: number }) {
       </nav>
 
       <div className="sidebar-footer">
+        {/* Subscribe */}
+        <div className="sidebar-subscribe">
+          <div className="nav-section-label" style={{ padding: 0, marginBottom: 8 }}>// updates</div>
+          {status === 'success' ? (
+            <div className="sidebar-subscribe-success">
+              <span className="prompt-symbol">→</span> subscribed!
+            </div>
+          ) : (
+            <>
+              <input
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
+                disabled={status === 'loading'}
+                className="sidebar-subscribe-input"
+              />
+              <button
+                onClick={handleSubscribe}
+                disabled={status === 'loading' || !email.includes('@')}
+                className="sidebar-subscribe-btn"
+              >
+                {status === 'loading' ? 'sending...' : 'subscribe →'}
+              </button>
+              {status === 'error' && (
+                <div className="sidebar-subscribe-error">! try again</div>
+              )}
+            </>
+          )}
+        </div>
+
         <button className="theme-toggle" onClick={toggle}>
           {theme === 'dark' ? '☀ light mode' : '◑ dark mode'}
         </button>

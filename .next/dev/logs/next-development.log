@@ -1,1 +1,54 @@
-[00:00:01.503] Server  LOG     ✓ Ready in 1042ms
+[00:00:00.817] Server  LOG     ✓ Ready in 544ms
+[00:00:37.641] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:03.104] Server  ERROR   Resend error: {}
+[00:01:57.552] Server  LOG       Reload env: .env.local
+[00:05:45.903] Server  LOG     ✓ Compiled in 67ms
+[00:07:00.462] Server  LOG     ✓ Compiled in 98ms
+[00:07:06.087] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:06.254] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+      <LoadingBoundary name="/" loading={null}>
+        <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+          <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+            <RedirectBoundary>
+              <RedirectErrorBoundary router={{...}}>
+                <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+                  <SegmentViewNode type="page" pagePath="page.tsx">
+                    <SegmentTrieNode>
+                    <HomePage>
+                      <div>
+                      <div>
+                      <HomePage>
+                        <SubscribeForm>
+                          <div className="subscribe-...">
+                            <div>
+                            <p>
+                            <form onSubmit={function handleSubmit} className="subscribe-...">
+                              <input
+                                type="email"
+                                required={true}
+                                placeholder="your@email.com"
+                                value=""
+                                onChange={function onChange}
+                                disabled={false}
+                                className="subscribe-input"
+-                               data-keeper-lock-id="k-442ms02v9ih"
+                              >
+                              ...
+                      ...
+                  ...
+                ...
+
+[00:09:33.041] Server  LOG     ✓ Compiled in 73ms
