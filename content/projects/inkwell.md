@@ -1,7 +1,7 @@
 ---
 name: Inkwell
 slug: inkwell
-tagline: "A writing app built around how writers actually think."
+tagline: "A social network for storytellers."
 status: in development
 started: "Feb 2026"
 stack: [Next.js, TypeScript, Supabase, TailwindCSS, Tiptap]
@@ -10,27 +10,68 @@ links:
   - label: "GitHub"
     url: "https://github.com/"
   - label: "Live preview"
-    url: "#"
+    url: "https://inkwell-indol-nine.vercel.app/"
 ---
 
-Inkwell is a distraction-free writing webapp. Most writing apps are really *organization* apps with a text editor bolted on — Inkwell flips that. You open it, you write. Structure emerges from the work, not from a system you have to maintain.
+## What?
 
-## The problem
+**Inkwell is a social writing platform where anyone can publish short stories and discover new writers.**
 
-Every writing tool I've tried eventually gets in the way. Notion is a database. Obsidian is a file manager. Bear is close, but still pulls you toward tagging and organizing before you've written anything worth organizing.
+Writers can share their work instantly, while readers can follow authors they enjoy and stay connected to the stories they love. Like other social platforms, you can follow accounts, discover new voices, and build a community around storytelling.
 
-Writers don't think in folders. They think in fragments, sessions, bursts. The tool should match that.
+Inkwell is designed to make publishing and discovering stories simple.
 
-## The vision
+---
 
-Fast load. Full focus. A single place where your writing lives, organized only as much as it needs to be. Eventually: real-time collaboration for co-writers, without turning it into a Google Docs clone.
+## The Problem
+
+For many writers, the hardest part isn’t writing the story — it’s **finding an audience**.
+
+Publishing can feel complicated or intimidating, and many platforms aren't built with new or independent writers in mind. As a result, countless stories remain unread and many writers never share their work at all.
+
+Writers need a place where they can:
+
+- Publish their work easily  
+- Connect with readers  
+- Grow an audience over time  
+
+---
+
+## The Vision
+
+Inkwell focuses on simplicity and creativity.
+
+- **Fast loading**
+- **Focused writing**
+- **Simple publishing**
+- **Built-in community**
+
+A place where stories can be written, shared, and discovered.
+
+Writers can publish their work and build a following, while readers can explore new stories and support the authors they enjoy.
+
+In the future, Inkwell will expand with features like **real-time collaboration for co-writers**, allowing creators to build stories and worlds together — without turning the experience into a traditional document editor.
+
+Our goal is simple:
+
+**Create a place where stories live and writers connect.**
+
+---
 
 ## Progress
 
+### Setup
 - [x] Project scaffolded
 - [x] Stack decided (Next.js + Supabase)
 - [x] Editor chosen (Tiptap)
-- [ ] Auth flow
-- [ ] Document CRUD
-- [ ] Auto-save
-- [ ] Publish to web
+
+### Core Features
+- [ ] Authentication flow
+- [ ] Story CRUD
+- [x] Auto-save
+- [x] Publishing system
+
+### Social Features
+- [x] Follow writers
+- [ ] Reader feed
+- [ ] Story discovery

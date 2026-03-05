@@ -21,13 +21,3 @@ Honestly? Familiarity. I know it well. App Router is mature now, the DX is good,
 ## Why Supabase
 
 Postgres under the hood, excellent real-time support via websockets, auth baked in, and a generous free tier. The alternative was PlanetScale + Clerk + Pusher and that's three things to worry about instead of one.
-
-```bash
-# project scaffold
-npx create-next-app@latest inkwell \
-  --typescript \
-  --tailwind \
-  --app
-```
-
-First commit was boring. That's a good sign.

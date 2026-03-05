@@ -1,9 +1,9 @@
 ---
-title: "Why I'm building yet another writing app"
+title: "Why I'm building a writing/ worldbuilding app"
 date: "Mar 04, 2026"
 number: "004"
 project: inkwell
-excerpt: "Every writing app fails writers the same way. Here's the problem I keep running into, and why I think the solution is simpler than everyone makes it."
+excerpt: "I love reading and writing, but above all I’m a nerd, so building a place where writers can create stories, characters, and entire worlds felt great."
 tags: [inkwell, meta]
 featured: true
 ---
