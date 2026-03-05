@@ -1,0 +1,52 @@
+name: Notify subscribers on new post
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/posts/**.md'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # need previous commit to detect new files
+
+      - name: Detect new post
+        id: detect
+        run: |
+          # Find .md files added in this push (not modified, only new)
+          NEW_FILE=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'content/posts/**.md' | head -n 1)
+          echo "new_file=$NEW_FILE" >> $GITHUB_OUTPUT
+
+      - name: Parse frontmatter and broadcast
+        if: steps.detect.outputs.new_file != ''
+        env:
+          BROADCAST_SECRET: ${{ secrets.BROADCAST_SECRET }}
+          SITE_URL: ${{ secrets.SITE_URL }}
+        run: |
+          FILE="${{ steps.detect.outputs.new_file }}"
+          echo "New post detected: $FILE"
+
+          # Extract frontmatter fields using sed
+          TITLE=$(sed -n 's/^title:[[:space:]]*["\x27]\?\(.*\)["\x27]\?$/\1/p' "$FILE" | head -n 1 | tr -d "\"'")
+          EXCERPT=$(sed -n 's/^excerpt:[[:space:]]*["\x27]\?\(.*\)["\x27]\?$/\1/p' "$FILE" | head -n 1 | tr -d "\"'")
+          DATE=$(sed -n 's/^date:[[:space:]]*\(.*\)$/\1/p' "$FILE" | head -n 1)
+
+          # Derive slug from filename (remove path and .md extension)
+          SLUG=$(basename "$FILE" .md)
+
+          echo "Title: $TITLE"
+          echo "Slug: $SLUG"
+          echo "Date: $DATE"
+
+          # Call the broadcast API route
+          curl -X POST "${{ secrets.SITE_URL }}/api/broadcast" \
+            -H "Authorization: Bearer $BROADCAST_SECRET" \
+            -H "Content-Type: application/json" \
+            -d "{\"title\":\"$TITLE\",\"excerpt\":\"$EXCERPT\",\"slug\":\"$SLUG\",\"date\":\"$DATE\"}"
