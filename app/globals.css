@@ -679,3 +679,107 @@ body {
   .about-content { padding: 40px 24px; }
   .about-grid { grid-template-columns: 1fr; }
 }
+
+/* ─── SUBSCRIBE BLOCK ───────────────────────────────────── */
+
+.subscribe-block {
+  margin: 0 40px 32px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s;
+}
+
+.subscribe-block::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent2);
+}
+
+.subscribe-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 10px;
+}
+
+.subscribe-desc {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 0;
+  max-width: 420px;
+}
+
+.subscribe-input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-right: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.subscribe-input::placeholder { color: var(--text-dimmer); }
+.subscribe-input:focus { border-color: var(--border-bright); }
+.subscribe-input:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.subscribe-button {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.subscribe-button:hover:not(:disabled) {
+  color: var(--accent2);
+  border-color: var(--accent2);
+  background: var(--bg2);
+}
+
+.subscribe-button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.subscribe-success-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--green);
+  letter-spacing: 0.04em;
+}
+
+.subscribe-error {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .subscribe-block { margin: 0 24px 24px; }
+  .subscribe-form { flex-direction: column; }
+  .subscribe-input { border-right: 1px solid var(--border); border-bottom: none; }
+  .subscribe-input:focus { border-color: var(--border-bright); }
+}
+
