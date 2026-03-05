@@ -6,6 +6,24 @@ on:
       - main
     paths:
       - 'content/posts/**.md'
+  workflow_dispatch:  # allows manual trigger from GitHub Actions tab
+    inputs:
+      title:
+        description: 'Post title'
+        required: true
+        default: 'Test post'
+      excerpt:
+        description: 'Post excerpt'
+        required: false
+        default: 'This is a test broadcast from the devlog.'
+      slug:
+        description: 'Post slug (used in URL)'
+        required: true
+        default: 'test-post'
+      date:
+        description: 'Post date'
+        required: true
+        default: '2026-03-05'
 
 jobs:
   notify:
@@ -15,17 +33,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2  # need previous commit to detect new files
+          fetch-depth: 2
 
-      - name: Detect new post
+      - name: Detect new post (on push)
         id: detect
+        if: github.event_name == 'push'
         run: |
-          # Find .md files added in this push (not modified, only new)
           NEW_FILE=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'content/posts/**.md' | head -n 1)
           echo "new_file=$NEW_FILE" >> $GITHUB_OUTPUT
 
-      - name: Parse frontmatter and broadcast
-        if: steps.detect.outputs.new_file != ''
+      - name: Parse frontmatter and broadcast (on push)
+        if: github.event_name == 'push' && steps.detect.outputs.new_file != ''
         env:
           BROADCAST_SECRET: ${{ secrets.BROADCAST_SECRET }}
           SITE_URL: ${{ secrets.SITE_URL }}
@@ -33,20 +51,23 @@ jobs:
           FILE="${{ steps.detect.outputs.new_file }}"
           echo "New post detected: $FILE"
 
-          # Extract frontmatter fields using sed
           TITLE=$(sed -n 's/^title:[[:space:]]*["\x27]\?\(.*\)["\x27]\?$/\1/p' "$FILE" | head -n 1 | tr -d "\"'")
           EXCERPT=$(sed -n 's/^excerpt:[[:space:]]*["\x27]\?\(.*\)["\x27]\?$/\1/p' "$FILE" | head -n 1 | tr -d "\"'")
           DATE=$(sed -n 's/^date:[[:space:]]*\(.*\)$/\1/p' "$FILE" | head -n 1)
-
-          # Derive slug from filename (remove path and .md extension)
           SLUG=$(basename "$FILE" .md)
 
-          echo "Title: $TITLE"
-          echo "Slug: $SLUG"
-          echo "Date: $DATE"
-
-          # Call the broadcast API route
-          curl -X POST "${{ secrets.SITE_URL }}/api/broadcast" \
+          curl -X POST "$SITE_URL/api/broadcast" \
             -H "Authorization: Bearer $BROADCAST_SECRET" \
             -H "Content-Type: application/json" \
             -d "{\"title\":\"$TITLE\",\"excerpt\":\"$EXCERPT\",\"slug\":\"$SLUG\",\"date\":\"$DATE\"}"
+
+      - name: Broadcast (manual trigger)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          BROADCAST_SECRET: ${{ secrets.BROADCAST_SECRET }}
+          SITE_URL: ${{ secrets.SITE_URL }}
+        run: |
+          curl -X POST "$SITE_URL/api/broadcast" \
+            -H "Authorization: Bearer $BROADCAST_SECRET" \
+            -H "Content-Type: application/json" \
+            -d "{\"title\":\"${{ github.event.inputs.title }}\",\"excerpt\":\"${{ github.event.inputs.excerpt }}\",\"slug\":\"${{ github.event.inputs.slug }}\",\"date\":\"${{ github.event.inputs.date }}\"}"
