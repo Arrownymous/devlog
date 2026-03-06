@@ -14,7 +14,7 @@ function renderContent(content: string) {
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;margin:20px 0;display:block;" />')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="width:300px;max-width:100%;margin:20px 0;display:block;" />')
     .replace(/- \[x\] (.+)/g, '<li class="check done">$1</li>')
     .replace(/- \[ \] (.+)/g, '<li class="check todo">$1</li>')
     .replace(/(<li class="check[^>]*>.*<\/li>\n?)+/g, (m) => `<ul class="checklist">${m}</ul>`)
