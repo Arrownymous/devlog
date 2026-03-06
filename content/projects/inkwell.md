@@ -17,46 +17,26 @@ links:
 
 **Inkwell is a social writing platform where anyone can publish short stories and discover new writers.**
 
-Writers can share their work instantly, while readers can follow authors they enjoy and stay connected to the stories they love. Like other social platforms, you can follow accounts, discover new voices, and build a community around storytelling.
+Writers can share their work instantly, and readers can follow authors they enjoy. The platform supports likes, comments, and avatars to make everything feel personal and social, but built specifically for storytelling.
 
-Inkwell is designed to make publishing and discovering stories simple.
+The writing experience runs on the Tiptap editor, keeping everything fast, focused, and enjoyable. No clutter, no heavy UI. You open it, you write, you publish.
 
----
+## Not a Problem
 
-## The Problem
-
-For many writers, the hardest part isn’t writing the story — it’s **finding an audience**.
-
-Publishing can feel complicated or intimidating, and many platforms aren't built with new or independent writers in mind. As a result, countless stories remain unread and many writers never share their work at all.
-
-Writers need a place where they can:
-
-- Publish their work easily  
-- Connect with readers  
-- Grow an audience over time  
-
----
+Inkwell didn’t start as a solution to anything. I just wanted to build something cool. I enjoy writing short stories, and the idea of creating a space where people can write, share, and explore sounded like a fun challenge. This project is a mix of creativity, curiosity, and the urge to learn by building.
 
 ## The Vision
 
-Inkwell focuses on simplicity and creativity.
+Inkwell is meant to feel light, creative, and immediate. A place where stories can be written and shared without getting in the way.
 
-- **Fast loading**
-- **Focused writing**
-- **Simple publishing**
+- **Fast loading**  
+- **Focused writing**  
+- **Simple publishing**  
 - **Built-in community**
 
-A place where stories can be written, shared, and discovered.
+Over time, Inkwell will grow with features like collaborative writing and expanded tools for worldbuilding. Always keeping the experience simple and fun.
 
-Writers can publish their work and build a following, while readers can explore new stories and support the authors they enjoy.
-
-In the future, Inkwell will expand with features like **real-time collaboration for co-writers**, allowing creators to build stories and worlds together — without turning the experience into a traditional document editor.
-
-Our goal is simple:
-
-**Create a place where stories live and writers connect.**
-
----
+**A place where stories live and writers connect.**
 
 ## Progress
 
