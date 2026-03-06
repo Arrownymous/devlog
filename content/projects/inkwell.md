@@ -21,7 +21,7 @@ Writers can share their work instantly, and readers can follow authors they enjo
 
 The writing experience runs on the Tiptap editor, keeping everything fast, focused, and enjoyable. No clutter, no heavy UI. You open it, you write, you publish.
 
-![Alt text](Images/Projects/Inkewell/Inkwell_heropage.png)
+![Hero Page Inkwell](/images/projects/Inkwell/Inkwell_heropage.png)
 
 ## Not a Problem
 
