@@ -21,6 +21,8 @@ Writers can share their work instantly, and readers can follow authors they enjo
 
 The writing experience runs on the Tiptap editor, keeping everything fast, focused, and enjoyable. No clutter, no heavy UI. You open it, you write, you publish.
 
+![Alt text](Images/Projects/Inkewell/Inkwell_heropage.png)
+
 ## Not a Problem
 
 Inkwell didn’t start as a solution to anything. I just wanted to build something cool. I enjoy writing short stories, and the idea of creating a space where people can write, share, and explore sounded like a fun challenge. This project is a mix of creativity, curiosity, and the urge to learn by building.
