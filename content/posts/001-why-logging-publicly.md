@@ -8,7 +8,7 @@ tags: [meta]
 featured: false
 ---
 
-I've kept private build journals before. They're useful — but they're also easy to abandon when nobody's watching. Making this public adds a small amount of pressure that I find genuinely useful.
+I've kept private build journals before. They're useful but they're also easy to abandon when nobody's watching. Making this public adds a small amount of pressure that I find genuinely useful.
 
 ## Accountability
 
@@ -20,6 +20,6 @@ Writing about what you're building forces you to understand it. If I can't expla
 
 ## Proof of work
 
-At the end of this project — whether Inkwell ships or not — I'll have a clear record of what I tried, what I learned, and how I thought. That has value independent of the outcome.
+At the end of this project, whether Inkwell ships or not. I'll have a clear record of what I tried, what I learned, and how I thought. That has value independent of the outcome.
 
 Alright. Back to building.

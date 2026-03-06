@@ -8,7 +8,7 @@ tags: [inkwell, learnings]
 featured: false
 ---
 
-The editor is the whole product. If it feels wrong, nothing else matters. So I spent a week prototyping with three different approaches before committing.
+The editor is is one of the things that wil make the platform unique. If it feels wrong, nothing else matters. So I spent a week prototyping with three different approaches before committing.
 
 ## ProseMirror
 
@@ -22,4 +22,4 @@ React-native, flexible, good mental model. But the ecosystem is sparse and break
 
 ProseMirror under the hood, React bindings, a growing extension ecosystem, and a clean API. This is what I went with. It has the right balance of **power and approachability**.
 
-The first working editor session felt right. Clean, immediate, no obvious jank. That's the bar — if it feels right to type in, we're on the right track.
+The first working editor session felt right. Clean, immediate, no obvious jank. That's the bar. If it feels right to type in, we're on the right track. Still needs a lot of care, but for now, the basics work.
